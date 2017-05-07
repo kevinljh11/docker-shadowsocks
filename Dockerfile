@@ -28,17 +28,17 @@ RUN apt-get -qq update && \
 RUN pip install shadowsocks
 
 ENV SS_SERVER_ADDR 0.0.0.0
-ENV SS_SERVER_PORT 8388
+ENV SS_SERVER_PORT 38388
 ENV SS_PASSWORD Ss123456
 ENV SS_METHOD aes-256-cfb
 ENV SS_TIMEOUT 300
 
 #add chacha20
-RUN wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz && \
-    tar zxf LATEST.tar.gz && \
-    cd libsodium* && \
-    ./configure && make -j2 && make install && \
-    ldconfig
+#RUN wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz && \
+#    tar zxf LATEST.tar.gz && \
+#    cd libsodium* && \
+#    ./configure && make -j2 && make install && \
+#    ldconfig
 
 ADD shadowsocks.json /etc/
 ADD start.sh /usr/local/bin/start.sh
